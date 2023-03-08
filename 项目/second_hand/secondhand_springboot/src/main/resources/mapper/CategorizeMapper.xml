@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.secondhand_springboot.mapper.CategorizeMapper">
+    <select id="listByCondition"  resultType="com.example.secondhand_springboot.entity.Categorize">
+        select * from categorize
+        order by c_id desc
+    </select>
+
+    <delete id="deleteById">
+        delete from categorize where c_id=#{c_id}
+    </delete>
+
+    <select id="saveAll"  resultType="com.example.secondhand_springboot.entity.Categorize">
+        select * from categorize where c_name=#{c_name}
+    </select>
+    <insert id="save">
+        insert into categorize(c_name)
+        values(#{c_name})
+    </insert>
+
+    <select id="getById"  resultType="com.example.secondhand_springboot.entity.Categorize">
+        select * from categorize where c_id=#{c_id}
+    </select>
+    <update id="updateById">
+        update categorize set c_name=#{c_name} where c_id=#{c_id}
+    </update>
+</mapper>

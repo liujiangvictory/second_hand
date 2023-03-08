@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.secondhand_springboot.mapper.OrdersMapper">
+    <select id="listByCondition"  resultType="com.example.secondhand_springboot.entity.Orders">
+        select * from orders o,users u,goods g
+        <where>
+            o.g_id=g.g_id and g.login_id=u.u_id
+            <if test="u_name!=null and u_name!=''">
+              and   u.u_name   like concat('%',#{u_name},'%')
+            </if>
+            <if test="g_name!=null and g_name!=''">
+               and  g.g_name like concat('%',#{g_name},'%')
+            </if>
+            <if test="o_state!=null and o_state!=''">
+              and   o.o_state=#{o_state}
+            </if>
+        </where>
+
+        order by o_id desc
+    </select>
+
+    <delete id="deleteById">
+        delete from orders where o_id=#{o_id}
+    </delete>
+
+</mapper>

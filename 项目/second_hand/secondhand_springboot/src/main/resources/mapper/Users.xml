@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.secondhand_springboot.mapper.UsersMapper">
+    <select id="list"  resultType="com.example.secondhand_springboot.entity.Users">
+        select * from users
+    </select>
+    <select id="listByCondition"  resultType="com.example.secondhand_springboot.entity.Users">
+        select * from users
+        <where>
+            <if test="u_name!=null and u_name!=''">
+              u_name like concat('%',#{u_name},'%')
+            </if>
+            <if test="u_state!=null and u_state!=''">
+                u_state=#{u_state}
+            </if>
+        </where>
+        order by u_id desc
+    </select>
+
+    <insert id="save">
+        insert into users(name,tel,email,sex,time,state)
+        values(#{name},#{tel},#{email},#{sex},#{time},#{state})
+    </insert>
+
+    <select id="getById"  resultType="com.example.secondhand_springboot.entity.Users">
+        select * from users where id=#{id}
+    </select>
+    <update id="updateById">
+        update users set u_state=#{u_state} where u_id=#{u_id}
+    </update>
+
+    <delete id="deleteById">
+        delete from users where u_id=#{u_id}
+    </delete>
+</mapper>

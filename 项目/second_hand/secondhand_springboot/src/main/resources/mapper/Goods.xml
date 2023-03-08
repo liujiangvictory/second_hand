@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.secondhand_springboot.mapper.GoodsMapper">
+    <select id="listByCondition"  resultType="com.example.secondhand_springboot.entity.Goods">
+        select * from goods g,categorize c,users u
+        <where>
+            g.c_id=c.c_id and g.login_id=u.u_id
+            <if test="g_name!=null and g_name!=''">
+               and  g_name like concat('%',#{g_name},'%')
+            </if>
+            <if test="g_state!=null and g_state!=''">
+               and  g_state=#{g_state}
+            </if>
+        </where>
+        order by g_id desc
+    </select>
+
+    <delete id="deleteById">
+        delete from goods where g_id=#{g_id}
+    </delete>
+
+    <update id="shop">
+        update goods set g_state=#{g_state} where g_id=#{g_id}
+    </update>
+
+</mapper>

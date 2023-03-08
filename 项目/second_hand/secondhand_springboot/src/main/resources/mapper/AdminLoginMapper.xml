@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.secondhand_springboot.mapper.AdminLoginMapper">
+    <select id="getEmailAndPassword" resultType="com.example.secondhand_springboot.entity.Login">
+         select * from admins where email=#{email} and password=#{password}
+     </select>
+
+    <select id="getById" resultType="com.example.secondhand_springboot.entity.Login">
+        select * from admins where u_id=#{u_id}
+    </select>
+
+    <select id="getByEmail" resultType="com.example.secondhand_springboot.entity.Login">
+        select * from admins where email=#{email}
+    </select>
+
+    <select id="getEmail" resultType="com.example.secondhand_springboot.entity.Login">
+        select * from admins where email=#{email}
+    </select>
+
+    <select id="getByUsername" resultType="com.example.secondhand_springboot.entity.Login">
+        select * from admins where u_name=#{u_name}
+    </select>
+
+    <update id="upAvatarById">
+        update admins set avatar=#{avatar} where u_id=#{u_id}
+    </update>
+</mapper>

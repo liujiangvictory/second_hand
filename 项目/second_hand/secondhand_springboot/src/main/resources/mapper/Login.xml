@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.secondhand_springboot.mapper.LoginMapper">
+
+    <select id="getId" resultType="com.example.secondhand_springboot.entity.Login">
+        select * from users where u_id=#{u_id}
+    </select>
+
+     <select id="getEmailAndPassword" resultType="com.example.secondhand_springboot.entity.Login">
+         select * from users where email=#{email} and password=#{password}
+     </select>
+
+    <select id="getById" resultType="com.example.secondhand_springboot.entity.Login">
+        select * from users where u_id=#{u_id}
+    </select>
+
+    <select id="getByEmail" resultType="com.example.secondhand_springboot.entity.Login">
+        select * from users where email=#{email}
+    </select>
+
+
+    <select id="registerAll" resultType="com.example.secondhand_springboot.entity.Login">
+        select * from users where email=#{email}
+    </select>
+    <insert id="register">
+        insert into users(u_name,sex,tel,email,password,password1,create_time)
+        values(#{u_name},#{sex},#{tel},#{email},#{password},#{password1},#{create_time})
+    </insert>
+
+    <select id="getEmail" resultType="com.example.secondhand_springboot.entity.Login">
+        select * from users where email=#{email}
+    </select>
+
+    <select id="getByUsername" resultType="com.example.secondhand_springboot.entity.Login">
+        select * from users where u_name=#{u_name}
+    </select>
+
+    <update id="upAvatarById">
+        update users set avatar=#{avatar} where u_id=#{u_id}
+    </update>
+</mapper>

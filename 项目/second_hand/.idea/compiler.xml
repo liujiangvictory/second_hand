@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="secondhand_springboot" />
+        <module name="second_hand_springboot (1)" />
+        <module name="second-hand-springboot" />
+        <module name="second_hand_springboot" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="second-hand-springboot" target="17" />
+      <module name="second_hand_springboot" target="1.8" />
+      <module name="second_hand_springboot (1)" target="1.8" />
+      <module name="secondhand_springboot" target="17" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="second-hand-springboot" options="-parameters" />
+      <module name="second_hand_springboot" options="-parameters" />
+      <module name="second_hand_springboot (1)" options="-parameters" />
+      <module name="secondhand_springboot" options="-parameters --add-modules java.base" />
+    </option>
+  </component>
+</project>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.secondhand_springboot.mapper.MineMapper">
+    <select id="getByName"  resultType="com.example.secondhand_springboot.entity.Users">
+        select * from users where u_id=#{u_id}
+    </select>
+
+    <select id="getMessageId"  resultType="com.example.secondhand_springboot.entity.Users">
+        select * from users where u_id=#{u_id}
+    </select>
+    <select id="MessageAll"  resultType="com.example.secondhand_springboot.entity.Users">
+        select * from users where email=#{email}
+    </select>
+    <update id="updateById">
+        update users set u_name=#{u_name},tel=#{tel},sex=#{sex},email=#{email},
+        avatar=#{avatar} where u_id=#{u_id}
+    </update>
+
+    <select id="collects_list"  resultType="com.example.secondhand_springboot.entity.Collects">
+        select * from collects  c,users u ,goods g,categorize d
+        where u.u_id=c.login_id and c.g_id= g.g_id and  c.c_id=d.c_id and c.login_id=#{login_id}
+    </select>
+
+    <select id="goods_list"  resultType="com.example.secondhand_springboot.entity.Goods">
+        select * from goods a,categorize b
+          where  a.c_id=b.c_id and  login_id=#{login_id}
+    </select>
+
+    <select id="getGoodsId"  resultType="com.example.secondhand_springboot.entity.Goods">
+        select * from goods where g_id=#{g_id}
+    </select>
+    <update id="updateByGoodsId">
+        update goods set g_name=#{g_name},c_id=#{c_id},price=#{price},`describe`=#{describe},
+        image=#{image} where g_id=#{g_id}
+    </update>
+
+    <delete id="deleteByGoodsId">
+        delete from goods where g_id=#{g_id}
+    </delete>
+
+    <select id="orders_list"  resultType="com.example.secondhand_springboot.entity.Orders">
+        select * from orders o,goods g,users u
+        where  o.g_id=g.g_id and u.u_id=g.login_id and o.login_id=#{login_id}
+    </select>
+
+    <select id="getOrders"  resultType="com.example.secondhand_springboot.entity.Orders">
+         select * from orders o,goods g,users u
+        where  o.g_id=g.g_id and u.u_id=g.login_id and o_id=#{o_id}
+    </select>
+
+    <delete id="deleteOrders">
+        delete from orders where o_id=#{o_id}
+    </delete>
+
+    <update id="updateOrders">
+        update orders set end_time=#{end_time},o_state=#{o_state} where o_id=#{o_id}
+    </update>
+</mapper>
